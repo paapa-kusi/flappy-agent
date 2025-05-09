@@ -1,42 +1,100 @@
-# Flappy Bird Game
+# Flappy Bird DQN Agent
 
-![version](https://img.shields.io/badge/version-1.0.2-blue)
+This project is a reinforcement learning implementation of a Deep Q-Network (DQN) agent trained to play a clone of the classic **Flappy Bird** game using PyTorch and Pygame.
 
-This project contains a Flappy Bird game developed using the Python programming language and the Pygame game development library. In this project, reflecting the classic and entertaining game mechanics, players control a bird and navigate it through obstacles to see how long they can survive.
+## Objective
 
-## Play now, right now! :grinning:
-
-[https://mehmetemineker.github.io/flappy-bird/](https://mehmetemineker.github.io/flappy-bird/)
-
-## Gameplay
-
-The player's objective is to control the bird, maneuvering it through pipes and earning the highest score possible. Players can make the bird flap upwards by pressing the spacebar on the keyboard. However, precise timing is essential to prevent the bird from falling too quickly. If the bird collides with pipes or the ground, the game ends.
-
-![screen record](gaming.gif)
-
-## How to Play
-
-1. Clone the project files to this repository.
-2. Ensure that you have Python 3 and the Pygame library installed on your computer.
-3. Navigate to the project directory in your terminal.
-4. Start the game by using the command `python3 main.py`.
-5. Use the spacebar key on the keyboard to control the bird's upward movement.
-6. If the player collides, they can restart the game by pressing the ESC key.
-
-## Why This Project?
-
-- A great opportunity to enhance your fundamental Python programming skills.
-- An engaging and interactive way to dive into game programming.
-- A chance to practice game mechanics and using the Pygame library.
-
-## Contributions and Development
-
-If you're interested in contributing to this project, feel free to open a pull request. We welcome suggestions for adding new features, fixing bugs, or improving the overall experience.
-
-## License
-
-This project is licensed under the Apache License 2.0. For more information, please refer to the `LICENSE` file.
+Train an agent to learn how to play Flappy Bird from scratch through trial and error using the DQN algorithm.
 
 ---
 
-Challenge yourself to beat your own high score in Flappy Bird and enjoy the fun of this game! If you have any questions or feedback, don't hesitate to reach out.
+## Features
+
+- **Deep Q-Learning** with experience replay and a target network
+- **Custom Flappy Bird environment** using Pygame
+- **Layer Normalization** and **Kaiming weight initialization** for stable training
+- **Epsilon-Greedy Exploration** with decay
+- **Reward shaping** to encourage staying near pipe center and surviving
+- **GPU Acceleration** (optional)
+
+---
+
+## Learning Strategy
+
+The agent receives:
+- A small reward for staying alive
+- A bonus reward for passing through pipes
+- A penalty for collisions
+- Extra shaping based on how well-aligned it is with the pipe gap center
+
+Over time, the agent learns to balance exploration and exploitation to maximize its score.
+
+---
+
+## 📁 Project Structure
+
+```bash
+├── assets/                 # Sprites and sound files
+├── objects/               # Game object classes (Bird, Pipe, etc.)
+├── flappy_env.py         # Game environment wrapper for training
+├── train.py              # DQN training script
+├── test.py               # Trained agent tester
+├── README.md             # Project overview
+```
+
+## Running the Code
+
+### Requirements
+
+- Python 3.7+
+- PyTorch
+- NumPy
+- Pygame
+- Matplotlib
+
+Install dependencies:
+
+```bash
+pip install torch pygame numpy matplotlib
+```
+---
+### Training the Agent
+
+To train the DQN agent:
+
+```bash
+python train.py
+```
+
+This will launch the training loop using a headless Pygame environment. The model will be saved as `flappy_bird_dqn.pth` whenever it reaches a new best average reward over the past 100 episodes. The number of episodes can be modified in the function parameters. Reward and penalty values can be modified in the `flappy_env.py` script.
+
+### Testing the Agent
+
+To visualize the performance of the trained agent:
+
+```bash
+python test.py
+```
+
+This will render the Flappy Bird game and have the trained model play rounds until a certain reward threshold is reached. This threshold value can be changed in the function parameters.
+
+
+## License & Attribution
+
+The Flappy Bird clone used in this project is originally sourced from a repository from this user.
+
+> **[mehmetemineker/flappy-bird](https://github.com/mehmetemineker/flappy-bird)**  
+
+
+This project and its modifications are intended for **educational, personal, and experimental purposes only**.
+
+---
+
+## Demo
+
+[![Flappy Bird DQN Agent Demo](https://img.youtube.com/vi/5swwiNZEHMk/maxresdefault.jpg)](https://youtu.be/5swwiNZEHMk)
+---
+
+## 🙌 Acknowledgments
+
+- The open-source contributor of the Flappy Bird clone (Apache 2.0)
