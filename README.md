@@ -31,7 +31,7 @@ Over time, the agent learns to balance exploration and exploitation to maximize 
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```bash
 ├── assets/                 # Sprites and sound files
@@ -95,6 +95,6 @@ This project and its modifications are intended for **educational, personal, and
 [![Flappy Bird DQN Agent Demo](https://img.youtube.com/vi/5swwiNZEHMk/maxresdefault.jpg)](https://youtu.be/5swwiNZEHMk)
 ---
 
-## 🙌 Acknowledgments
+## Acknowledgments
 
 - The open-source contributor of the Flappy Bird clone (Apache 2.0)
